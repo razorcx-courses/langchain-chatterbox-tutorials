@@ -8,6 +8,7 @@ import Hero from "./components/Hero.vue";
 import ChatBox from "./components/ChatBox.vue";
 import Footer from "./components/Footer.vue";
 import Joke from "./components/Joke.vue";
+import Prompts from "./components/Prompts.vue";
 
 const app = createApp(App)
   .use(router)
@@ -16,4 +17,5 @@ const app = createApp(App)
   .component("ChatBox", ChatBox)
   .component("Footer", Footer)
   .component("Joke", Joke)
+  .component("Prompts", Prompts)
   .mount("#app");

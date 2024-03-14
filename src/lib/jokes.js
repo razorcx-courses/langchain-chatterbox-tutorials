@@ -1,13 +1,8 @@
-import { ChatOpenAI } from "@langchain/openai";
+// import { ChatOpenAI } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { RunnableSequence } from "@langchain/core/runnables";
-import { StringOutputParser } from "@langchain/core/output_parsers";
 import { StructuredOutputParser } from "@langchain/core/output_parsers";
-
-const model = new ChatOpenAI({
-  openAIApiKey: import.meta.env.VITE_APP_OPEN_API_KEY,
-  temperature: 0,
-});
+import { chatOpenAIModel as model } from "./chatOpenAI";
 
 const prompt = PromptTemplate.fromTemplate(
   "Tell me a joke about \n{format_instructions}\n{input}"

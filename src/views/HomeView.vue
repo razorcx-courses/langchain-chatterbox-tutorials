@@ -2,7 +2,8 @@
   <div>
     <Nav></Nav>
     <Hero></Hero>
-    <Joke></Joke>
+    <!-- <Joke></Joke> -->
+    <Prompts></Prompts>
     <Footer></Footer>
   </div>
 </template>
