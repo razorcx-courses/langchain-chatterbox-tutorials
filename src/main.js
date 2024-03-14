@@ -9,6 +9,7 @@ import ChatBox from "./components/ChatBox.vue";
 import Footer from "./components/Footer.vue";
 import Joke from "./components/Joke.vue";
 import Prompts from "./components/Prompts.vue";
+import ChatPrompts from '@/components/ChatPrompts.vue';
 
 const app = createApp(App)
   .use(router)
@@ -18,4 +19,5 @@ const app = createApp(App)
   .component("Footer", Footer)
   .component("Joke", Joke)
   .component("Prompts", Prompts)
+  .component("ChatPrompts", ChatPrompts)
   .mount("#app");
