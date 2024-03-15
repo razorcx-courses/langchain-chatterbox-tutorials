@@ -7,7 +7,7 @@
     @getResponse="onGetResponse"
   >
     <template v-if="response">
-      <p class="ml-3 mb-3">{{ response }}</p>
+      <p>{{ response }}</p>
     </template>
   </ChatBox>
 </template>
