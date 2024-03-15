@@ -9,13 +9,13 @@ import OpenAIPrompts from '@/components/OpenAIPrompts.vue';
     <Nav></Nav>
     <Hero></Hero>
     <!-- <Joke></Joke> -->
-    <Prompts></Prompts>
+    <!-- <Prompts></Prompts>
     <ChatPrompts></ChatPrompts>
     <FewShotPrompts></FewShotPrompts>
     <PromptingWithFunctions></PromptingWithFunctions>
     <PipelinePrompts></PipelinePrompts>
     <JsonOutputParsers></JsonOutputParsers>
-    <CSVListOutputParser></CSVListOutputParser>
+    <CSVListOutputParser></CSVListOutputParser> -->
     <DocumentReader></DocumentReader>
     <Footer></Footer>
   </div>

@@ -5,12 +5,6 @@
       class="flex flex-col max-w-sm md:max-w-lg mx-auto rounded-md overflow-hidden"
     >
       <div class="flex flex-col justify-center items-center bg-black py-3 text-white">
-        <!-- <p class="text-xs font-semibold">
-          LangChain -
-          <span class="font-medium text-pink-400">
-            chatter<span class="text-white font-bold">Box</span>
-          </span>
-        </p> -->
         <p class="text-base">{{ chatWindowTitle }}</p>
         <p class="text-[10px] text-pink-400">{{ chatWindowDesciption }}</p>
       </div>
