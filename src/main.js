@@ -16,6 +16,7 @@ import PipelinePrompts from '@/components/PipelinePrompts.vue';
 import JsonOutputParsers from '@/components/JsonOutputParsers.vue';
 import CSVListOutputParser from '@/components/CSVListOutputParser.vue';
 import RAGwithPDF from '@/components/RAGwithPDF.vue';
+import ChatMemory from '@/components/ChatMemory.vue';
 
 const app = createApp(App)
   .use(router)
@@ -31,5 +32,5 @@ const app = createApp(App)
   .component("PipelinePrompts", PipelinePrompts)
   .component("JsonOutputParsers", JsonOutputParsers)
   .component("CSVListOutputParser", CSVListOutputParser)
-  .component("RAGwithPDF", RAGwithPDF)
+  .component("ChatMemory", ChatMemory)
   .mount("#app");

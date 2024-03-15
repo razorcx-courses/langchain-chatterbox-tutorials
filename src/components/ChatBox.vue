@@ -4,7 +4,9 @@
       id="chat-card"
       class="flex flex-col max-w-sm md:max-w-xl mx-auto rounded-md overflow-hidden"
     >
-      <div class="flex flex-col justify-center items-center bg-black py-3 text-white">
+      <div
+        class="flex flex-col justify-center items-center bg-black py-3 text-white"
+      >
         <p class="text-base">{{ chatWindowTitle }}</p>
         <p class="text-[10px] text-pink-400">{{ chatWindowDesciption }}</p>
       </div>
@@ -58,5 +60,6 @@ const props = defineProps({
   chatWindowDesciption: String,
   response: {},
 });
+defineEmits(["getResponse"]);
 const modelValue = defineModel();
 </script>

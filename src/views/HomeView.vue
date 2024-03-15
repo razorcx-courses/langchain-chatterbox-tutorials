@@ -1,4 +1,6 @@
 
+import ChatMemory from '@/components/ChatMemory.vue';
+
 import DocumentReader from '@/components/DocumentReader.vue';
 
 import CSVListOutputParser from '@/components/CSVListOutputParser.vue';
@@ -16,7 +18,8 @@ import OpenAIPrompts from '@/components/OpenAIPrompts.vue';
     <PipelinePrompts></PipelinePrompts>
     <JsonOutputParsers></JsonOutputParsers>
     <CSVListOutputParser></CSVListOutputParser> -->
-    <RAGwithPDF></RAGwithPDF>
+    <!-- <RAGwithPDF></RAGwithPDF> -->
+    <ChatMemory></ChatMemory>
     <Footer></Footer>
   </div>
 </template>
