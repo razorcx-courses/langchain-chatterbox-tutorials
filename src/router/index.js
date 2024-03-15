@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import ChatMemory from '../views/ChatMemory.vue'
+import RAG from '../views/RAG.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,12 +14,12 @@ const router = createRouter({
     {
       path: '/chat-memory',
       name: 'chat-memory',
-      component: () => import('../views/ChatMemory.vue')
+      component: ChatMemory
     },
     {
       path: '/rag',
       name: 'rag',
-      component: () => import('../views/RAG.vue')
+      component: RAG
     }
   ]
 })

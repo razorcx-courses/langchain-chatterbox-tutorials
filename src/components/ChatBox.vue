@@ -1,5 +1,5 @@
 <template>
-  <section id="chat" class="pt-4 px-4 h-full mb-6">
+  <section id="chat" class="pt-4 px-4 h-full mb-12">
     <div
       id="chat-card"
       class="flex flex-col max-w-sm md:max-w-xl mx-auto rounded-md overflow-hidden"
@@ -12,7 +12,7 @@
       </div>
       <div
         id="response"
-        class="bg-gray-200 p-3 pb-0 text-white h-44 md:h-96 flex flex-col"
+        class="bg-gray-200 p-3 pb-0 text-white h-44 md:h-64 flex flex-col"
       >
         <div
           class="border-l-0 border border-solid border-b-gray-400 text-xs text-gray-800 flex justify-left items-center rounded-t-sm overflow-hidden"
