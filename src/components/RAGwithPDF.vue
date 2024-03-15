@@ -25,6 +25,8 @@
         id="file_input"
         type="file"
         accept=".pdf"
+        @change="readFile()"
+        ref="file"
       />
     </div>
   </section>
@@ -48,10 +50,11 @@ import { OpenAIEmbeddings } from "@langchain/openai";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { similarity } from "ml-distance";
 
-const chatWindowTitle = ref("PDF Document Memory Vector Store");
+const chatWindowTitle = ref("RAG - PDF Document Memory Vector Store");
 const chatWindowDesciption = ref("Ask questions about the PDF document");
 const response = ref();
 const modelValue = ref("Tell me about council members.");
+const file = ref(null);
 
 let vectorStoreRetriever;
 
@@ -84,57 +87,55 @@ Question: {question}`);
   response.value = result;
 };
 
-onMounted(() => {
-  document
-    .getElementById("file_input")
-    .addEventListener("change", async function (event) {
-      // Check if the user has selected a file
-      if (this.files && this.files.length > 0) {
-        // Access the file
-        const blob = this.files[0];
+const readFile = async () => {
+  const files = file.value.files;
+  // Check if the user has selected a file
+  if (files && files.length > 0) {
+    console.log("Document loaded");
+    // Access the file
+    const blob = files[0];
 
-        //https://github.com/mozilla/pdf.js/issues/17245
-        const pdfjs = await import("pdfjs-dist/legacy/build/pdf.min.mjs");
-        const pdfjsWorker = await import(
-          "pdfjs-dist/legacy/build/pdf.worker.min.mjs"
-        );
-        pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+    //https://github.com/mozilla/pdf.js/issues/17245
+    const pdfjs = await import("pdfjs-dist/legacy/build/pdf.min.mjs");
+    const pdfjsWorker = await import(
+      "pdfjs-dist/legacy/build/pdf.worker.min.mjs"
+    );
+    pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
-        const pdfLoader = new WebPDFLoader(blob, {
-          parsedItemSeparator: "",
-          pdfjs: () => Promise.resolve(pdfjs),
-        });
-
-        const docs = await pdfLoader.load();
-
-        //https://github.com/langchain-ai/langchainjs/issues/943 - nov 24 2023 - Riyaancode
-        const embeddings = new OpenAIEmbeddings({
-          openAIApiKey: import.meta.env.VITE_APP_OPEN_API_KEY,
-        });
-
-        const vectorStore = await MemoryVectorStore.fromDocuments(
-          docs,
-          embeddings,
-          { similarity: similarity.pearson }
-        );
-
-        // const jsonToStore = vectorStore.memoryVectors;
-        //console.log(jsonToStore)
-
-        // Next time when needed I load this file again using the following code.
-        // const vectorStoreData = loadDataFromJsonFileStoredAbove();
-        // const vectorStore = await MemoryVectorStore.fromExistingIndex(embeddings);
-        // vectorStore.memoryVectors = vectorStoreData;
-
-        // Initialize a retriever wrapper around the vector store
-        vectorStoreRetriever = vectorStore.asRetriever();
-
-        // const relaventDocs = await vectorStoreRetriever.getRelevantDocuments(
-        //   modelValue.value
-        // );
-
-        // console.log(relaventDocs);
-      }
+    const pdfLoader = new WebPDFLoader(blob, {
+      parsedItemSeparator: "",
+      pdfjs: () => Promise.resolve(pdfjs),
     });
-});
+
+    const docs = await pdfLoader.load();
+
+    //https://github.com/langchain-ai/langchainjs/issues/943 - nov 24 2023 - Riyaancode
+    const embeddings = new OpenAIEmbeddings({
+      openAIApiKey: import.meta.env.VITE_APP_OPEN_API_KEY,
+    });
+
+    const vectorStore = await MemoryVectorStore.fromDocuments(
+      docs,
+      embeddings,
+      { similarity: similarity.pearson }
+    );
+
+    // const jsonToStore = vectorStore.memoryVectors;
+    //console.log(jsonToStore)
+
+    // Next time when needed I load this file again using the following code.
+    // const vectorStoreData = loadDataFromJsonFileStoredAbove();
+    // const vectorStore = await MemoryVectorStore.fromExistingIndex(embeddings);
+    // vectorStore.memoryVectors = vectorStoreData;
+
+    // Initialize a retriever wrapper around the vector store
+    vectorStoreRetriever = vectorStore.asRetriever();
+
+    // const relaventDocs = await vectorStoreRetriever.getRelevantDocuments(
+    //   modelValue.value
+    // );
+
+    // console.log(relaventDocs);
+  }
+};
 </script>
