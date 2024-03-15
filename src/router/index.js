@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import ChatMemory from "../views/ChatMemory.vue";
-import RAG from "../views/RAG.vue";
+import ChatMemory from "../views/ChatMemoryView.vue";
+import RAG from "../views/RAGView.vue";
+import Prompts from "../views/PromptsView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: "/rag",
       name: "rag",
       component: RAG,
+    },
+    {
+      path: "/prompts",
+      name: "prompts",
+      component: Prompts,
     },
   ],
 });
