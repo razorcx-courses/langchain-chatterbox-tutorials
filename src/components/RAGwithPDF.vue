@@ -89,6 +89,7 @@ Question: {question}`);
 
 const readFile = async () => {
   const files = file.value.files;
+  console.log('Files', files)
   // Check if the user has selected a file
   if (files && files.length > 0) {
     console.log("Document loaded");
