@@ -16,6 +16,9 @@
     "langchain": "^0.1.28",
     "pdf-parse": "^1.1.1",
     "pdfjs-dist": "^4.0.379",
+    "tiktoken": "^1.0.13",
+    "vite-plugin-top-level-await": "^1.4.1",
+    "vite-plugin-wasm": "^3.3.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
