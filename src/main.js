@@ -10,6 +10,12 @@ import Footer from "./components/Footer.vue";
 import Joke from "./components/Joke.vue";
 import Prompts from "./components/Prompts.vue";
 import ChatPrompts from '@/components/ChatPrompts.vue';
+import FewShotPrompts from '@/components/FewShotPrompts.vue';
+import PromptingWithFunctions  from '@/components/PromptingWithFunctions.vue';
+import PipelinePrompts from '@/components/PipelinePrompts.vue'; 
+import JsonOutputParsers from '@/components/JsonOutputParsers.vue';
+import CSVListOutputParser from '@/components/CSVListOutputParser.vue';
+import DocumentReader from '@/components/DocumentReader.vue';
 
 const app = createApp(App)
   .use(router)
@@ -20,4 +26,10 @@ const app = createApp(App)
   .component("Joke", Joke)
   .component("Prompts", Prompts)
   .component("ChatPrompts", ChatPrompts)
+  .component("FewShotPrompts", FewShotPrompts)
+  .component("PromptingWithFunctions", PromptingWithFunctions)
+  .component("PipelinePrompts", PipelinePrompts)
+  .component("JsonOutputParsers", JsonOutputParsers)
+  .component("CSVListOutputParser", CSVListOutputParser)
+  .component("DocumentReader", DocumentReader)
   .mount("#app");

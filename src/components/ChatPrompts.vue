@@ -6,16 +6,8 @@ import { onMounted } from "vue";
 
 import {
   ChatPromptTemplate,
-  PromptTemplate,
-  SystemMessagePromptTemplate,
-  AIMessagePromptTemplate,
-  HumanMessagePromptTemplate,
 } from "@langchain/core/prompts";
-import {
-  AIMessage,
-  HumanMessage,
-  SystemMessage,
-} from "@langchain/core/messages";
+
 import { RunnableSequence } from "@langchain/core/runnables";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 import { chatOpenAIModel as model } from "../lib/chatOpenAI";
