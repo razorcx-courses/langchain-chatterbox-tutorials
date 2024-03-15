@@ -32,5 +32,6 @@ const app = createApp(App)
   .component("PipelinePrompts", PipelinePrompts)
   .component("JsonOutputParsers", JsonOutputParsers)
   .component("CSVListOutputParser", CSVListOutputParser)
+  .component("RAGwithPDF", RAGwithPDF)
   .component("ChatMemory", ChatMemory)
   .mount("#app");

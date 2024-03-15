@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 
 import { PromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";
@@ -53,7 +53,7 @@ import { similarity } from "ml-distance";
 const chatWindowTitle = ref("RAG - PDF Document Memory Vector Store");
 const chatWindowDesciption = ref("Ask questions about the PDF document");
 const response = ref();
-const modelValue = ref("Tell me about council members.");
+const modelValue = ref("Tell me about the document.");
 const file = ref(null);
 
 let vectorStoreRetriever;
@@ -82,7 +82,7 @@ Question: {question}`);
 
   const result = await chain.invoke(modelValue.value);
 
-  console.log(result);
+  // console.log(result);
 
   response.value = result;
 };
@@ -121,7 +121,6 @@ const readFile = async () => {
     );
 
     // const jsonToStore = vectorStore.memoryVectors;
-    //console.log(jsonToStore)
 
     // Next time when needed I load this file again using the following code.
     // const vectorStoreData = loadDataFromJsonFileStoredAbove();
@@ -134,8 +133,6 @@ const readFile = async () => {
     // const relaventDocs = await vectorStoreRetriever.getRelevantDocuments(
     //   modelValue.value
     // );
-
-    // console.log(relaventDocs);
   }
 };
 </script>
