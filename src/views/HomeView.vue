@@ -5,7 +5,7 @@ import CSVListOutputParser from '@/components/CSVListOutputParser.vue';
 
 import OpenAIPrompts from '@/components/OpenAIPrompts.vue';
 <template>
-  <div>
+  <div class="font-mono">
     <Nav></Nav>
     <Hero></Hero>
     <!-- <Joke></Joke> -->
@@ -16,7 +16,7 @@ import OpenAIPrompts from '@/components/OpenAIPrompts.vue';
     <PipelinePrompts></PipelinePrompts>
     <JsonOutputParsers></JsonOutputParsers>
     <CSVListOutputParser></CSVListOutputParser> -->
-    <DocumentReader></DocumentReader>
+    <RAGwithPDF></RAGwithPDF>
     <Footer></Footer>
   </div>
 </template>

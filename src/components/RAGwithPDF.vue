@@ -10,9 +10,24 @@
       <p class="ml-3 mb-3">{{ response }}</p>
     </template>
   </ChatBox>
-  <div class="flex flex-col justify-between items-center">
-    <input id="pdfInput" type="file" accept=".pdf" />
-  </div>
+
+  <section class="px-4">
+    <div
+      class="flex flex-col items-left max-w-sm md:max-w-xl mx-auto mb-16 bg-gray-200 p-6"
+    >
+      <label
+        class="block mb-2 text-sm font-medium text-gray-900"
+        for="file_input"
+        >Upload file</label
+      >
+      <input
+        class="text-sm text-gray-900 border rounded cursor-pointer bg-gray-50 focus:outline-none"
+        id="file_input"
+        type="file"
+        accept=".pdf"
+      />
+    </div>
+  </section>
 </template>
 
 <script setup>
@@ -41,6 +56,11 @@ const modelValue = ref("Tell me about council members.");
 let vectorStoreRetriever;
 
 const onGetResponse = async () => {
+  if (!vectorStoreRetriever) {
+    console.log("Load document and try again.");
+    return;
+  }
+
   const prompt =
     PromptTemplate.fromTemplate(`Answer the question based only on the following context:
 {context}
@@ -57,8 +77,6 @@ Question: {question}`);
     new StringOutputParser(),
   ]);
 
-  //console.log(chain);
-
   const result = await chain.invoke(modelValue.value);
 
   console.log(result);
@@ -68,7 +86,7 @@ Question: {question}`);
 
 onMounted(() => {
   document
-    .getElementById("pdfInput")
+    .getElementById("file_input")
     .addEventListener("change", async function (event) {
       // Check if the user has selected a file
       if (this.files && this.files.length > 0) {
@@ -93,12 +111,15 @@ onMounted(() => {
         const embeddings = new OpenAIEmbeddings({
           openAIApiKey: import.meta.env.VITE_APP_OPEN_API_KEY,
         });
+
         const vectorStore = await MemoryVectorStore.fromDocuments(
           docs,
           embeddings,
           { similarity: similarity.pearson }
         );
-        const jsonToStore = vectorStore.memoryVectors;
+
+        // const jsonToStore = vectorStore.memoryVectors;
+        //console.log(jsonToStore)
 
         // Next time when needed I load this file again using the following code.
         // const vectorStoreData = loadDataFromJsonFileStoredAbove();
@@ -108,12 +129,11 @@ onMounted(() => {
         // Initialize a retriever wrapper around the vector store
         vectorStoreRetriever = vectorStore.asRetriever();
 
-        const template = modelValue.value;
-        const relaventDocs = await vectorStoreRetriever.getRelevantDocuments(
-          template
-        );
+        // const relaventDocs = await vectorStoreRetriever.getRelevantDocuments(
+        //   modelValue.value
+        // );
 
-        console.log(relaventDocs);
+        // console.log(relaventDocs);
       }
     });
 });

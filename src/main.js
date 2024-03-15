@@ -15,7 +15,7 @@ import PromptingWithFunctions  from '@/components/PromptingWithFunctions.vue';
 import PipelinePrompts from '@/components/PipelinePrompts.vue'; 
 import JsonOutputParsers from '@/components/JsonOutputParsers.vue';
 import CSVListOutputParser from '@/components/CSVListOutputParser.vue';
-import DocumentReader from '@/components/DocumentReader.vue';
+import RAGwithPDF from '@/components/RAGwithPDF.vue';
 
 const app = createApp(App)
   .use(router)
@@ -31,5 +31,5 @@ const app = createApp(App)
   .component("PipelinePrompts", PipelinePrompts)
   .component("JsonOutputParsers", JsonOutputParsers)
   .component("CSVListOutputParser", CSVListOutputParser)
-  .component("DocumentReader", DocumentReader)
+  .component("RAGwithPDF", RAGwithPDF)
   .mount("#app");
