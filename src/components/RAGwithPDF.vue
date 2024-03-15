@@ -113,6 +113,7 @@ const readFile = async () => {
     //https://github.com/langchain-ai/langchainjs/issues/943 - nov 24 2023 - Riyaancode
     const embeddings = new OpenAIEmbeddings({
       openAIApiKey: import.meta.env.VITE_APP_OPEN_API_KEY,
+      model: "text-embedding-3-small"
     });
 
     const vectorStore = await MemoryVectorStore.fromDocuments(
